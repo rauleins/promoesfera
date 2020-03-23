@@ -38293,12 +38293,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4a6d5b90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Donut.vue?vue&type=template&id=fa8616c2&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"43923ff6-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Donut.vue?vue&type=template&id=185716cb&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cdc-container",style:(_vm.placementStyles.container)},[_c('div',{ref:"donut",staticClass:"cdc",style:(_vm.donutStyles)},[_c('donut-sections',_vm._g({attrs:{"sections":_vm.donutSections,"start-angle":_vm.startAngle}},_vm.sectionListeners)),_c('div',{staticClass:"cdc-overlay",style:(_vm.overlayStyles)},[_c('div',{staticClass:"cdc-text",style:(_vm.donutTextStyles)},[_vm._t("default",[_vm._v(_vm._s(_vm.text))])],2)])],1),_vm._t("legend",[(_vm.hasLegend)?_c('div',{staticClass:"cdc-legend",style:(_vm.placementStyles.legend)},_vm._l((_vm.legend),function(item,idx){return _c('span',{key:idx,staticClass:"cdc-legend-item",attrs:{"title":item.percent}},[_c('span',{staticClass:"cdc-legend-item-color",style:(item.styles)}),_c('span',[_vm._v(_vm._s(item.label))])])}),0):_vm._e()])],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Donut.vue?vue&type=template&id=fa8616c2&
+// CONCATENATED MODULE: ./src/components/Donut.vue?vue&type=template&id=185716cb&
 
 // CONCATENATED MODULE: ./src/utils/events.js
 var nativeSectionEvents = ['click', 'mouseenter', 'mouseleave', 'mouseover', 'mouseout', 'mousemove'].map(function (nativeEventName) {
@@ -38379,7 +38379,7 @@ function sectionValidator(section) {
     return acc && valid;
   }, true);
 }
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"4a6d5b90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/DonutSections.vue?vue&type=template&id=cafc83a2&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"43923ff6-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/DonutSections.vue?vue&type=template&id=cafc83a2&
 var DonutSectionsvue_type_template_id_cafc83a2_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"cdc-sections",style:(_vm.containerStyles)},_vm._l((_vm.donutSections),function(section,idx){return _c('div',_vm._g({key:idx,staticClass:"cdc-section",class:section.className,style:(section.sectionStyles)},section.listeners),[_c('div',{staticClass:"cdc-filler",style:(section.fillerStyles),attrs:{"title":section.label}})])}),0)}
 var DonutSectionsvue_type_template_id_cafc83a2_staticRenderFns = []
 
@@ -38663,6 +38663,10 @@ function Donutvue_type_script_lang_js_defineProperty(obj, key, value) { if (key 
       type: String,
       default: null
     },
+    autoAdjustTextSize: {
+      type: Boolean,
+      default: true
+    },
     // color to use for the middle of the donut
     // set this to `transparent` or `thickness` to 100 to make a pie chart instead
     background: {
@@ -38715,6 +38719,10 @@ function Donutvue_type_script_lang_js_defineProperty(obj, key, value) { if (key 
     }
   },
   watch: {
+    autoAdjustTextSize: function autoAdjustTextSize(val) {
+      if (val) window.addEventListener('resize', this.resizeListener);else window.removeEventListener('resize', this.resizeListener);
+      this.recalcFontSize();
+    },
     size: function size() {
       this.recalcFontSize();
     },
@@ -38857,6 +38865,11 @@ function Donutvue_type_script_lang_js_defineProperty(obj, key, value) { if (key 
     recalcFontSize: function recalcFontSize() {
       var _this4 = this;
 
+      if (!this.autoAdjustTextSize) {
+        this.fontSize = '1em';
+        return;
+      }
+
       var scaleDownBy = 0.08;
       var widthInPx = this.size;
       this.$nextTick(function () {
@@ -38876,11 +38889,16 @@ function Donutvue_type_script_lang_js_defineProperty(obj, key, value) { if (key 
       this.$emit.apply(this, [sectionEventName].concat(args));
     }
   },
+  created: function created() {
+    this.resizeListener = this.recalcFontSize.bind(this);
+  },
   mounted: function mounted() {
     this.donutEl = this.$refs.donut;
-    this.recalcFontSize();
-    this.resizeListener = this.recalcFontSize.bind(this);
-    window.addEventListener('resize', this.resizeListener);
+
+    if (this.autoAdjustTextSize) {
+      this.recalcFontSize();
+      window.addEventListener('resize', this.resizeListener);
+    }
   },
   beforeDestroy: function beforeDestroy() {
     window.removeEventListener('resize', this.resizeListener);
@@ -39135,7 +39153,11 @@ function normalizeComponent (
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /*!
+<<<<<<< HEAD
   * vue-router v3.1.5
+=======
+  * vue-router v3.1.6
+>>>>>>> ee6d0e6485faab35f41f40ac773ed61a922be9a6
   * (c) 2020 Evan You
   * @license MIT
   */
@@ -40078,7 +40100,8 @@ function fillParams (
       (regexpCompileCache[path] = pathToRegexp_1.compile(path));
 
     // Fix #2505 resolving asterisk routes { name: 'not-found', params: { pathMatch: '/not-found' }}
-    if (params.pathMatch) { params[0] = params.pathMatch; }
+    // and fix #3106 so that you can work with location descriptor object having params.pathMatch equal to empty string
+    if (typeof params.pathMatch === 'string') { params[0] = params.pathMatch; }
 
     return filler(params, { pretty: true })
   } catch (e) {
@@ -40826,7 +40849,10 @@ function setupScroll () {
   // location.host contains the port and location.hostname doesn't
   var protocolAndPath = window.location.protocol + '//' + window.location.host;
   var absolutePath = window.location.href.replace(protocolAndPath, '');
-  window.history.replaceState({ key: getStateKey() }, '', absolutePath);
+  // preserve existing history state as it could be overriden by the user
+  var stateCopy = extend({}, window.history.state);
+  stateCopy.key = getStateKey();
+  window.history.replaceState(stateCopy, '', absolutePath);
   window.addEventListener('popstate', function (e) {
     saveScrollPosition();
     if (e.state && e.state.key) {
@@ -42041,7 +42067,11 @@ function createHref (base, fullPath, mode) {
 }
 
 VueRouter.install = install;
+<<<<<<< HEAD
 VueRouter.version = '3.1.5';
+=======
+VueRouter.version = '3.1.6';
+>>>>>>> ee6d0e6485faab35f41f40ac773ed61a922be9a6
 
 if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
@@ -71131,8 +71161,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\wamp64\www\promoesfera\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\wamp64\www\promoesfera\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\xampp\htdocs\promoesfera\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\promoesfera\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> ee6d0e6485faab35f41f40ac773ed61a922be9a6
 
 
 /***/ })

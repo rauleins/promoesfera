@@ -22,4 +22,9 @@ class SesionController extends Controller
         $rol = DB::select("SELECT * FROM ttjv_roles WHERE TTJV_id_usuario = " . Auth::user()->id);
         return $rol;
     }
+
+    public function ejemplo(){
+        $rol = DB::select("SELECT * FROM accesos");
+        return $rol;
+    }
 }

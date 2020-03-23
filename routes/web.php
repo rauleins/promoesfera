@@ -108,6 +108,9 @@ Route::get('/receta/pdf', 'ttjv_RecetaController@pdf');
 //CRUD Vista
 Route::get('/vista/listar', 'ttjv_ResultadoController@vercolores');
 
+//EJEMPLOS
+Route::get('/verejemplo', 'SesionController@ejemplo');
+
 Route::get('/assets/plugins/popper/popper.min.js.map', function () {
     return redirect('/');
 });
