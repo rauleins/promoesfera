@@ -73,4 +73,5 @@ const router =new Router({
         }
     ],
 });
+//ejemplo
 export default router;
