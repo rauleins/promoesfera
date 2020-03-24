@@ -39153,11 +39153,7 @@ function normalizeComponent (
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /*!
-<<<<<<< HEAD
-  * vue-router v3.1.5
-=======
   * vue-router v3.1.6
->>>>>>> ee6d0e6485faab35f41f40ac773ed61a922be9a6
   * (c) 2020 Evan You
   * @license MIT
   */
@@ -42067,11 +42063,7 @@ function createHref (base, fullPath, mode) {
 }
 
 VueRouter.install = install;
-<<<<<<< HEAD
-VueRouter.version = '3.1.5';
-=======
 VueRouter.version = '3.1.6';
->>>>>>> ee6d0e6485faab35f41f40ac773ed61a922be9a6
 
 if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
@@ -71010,73 +71002,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [{
     path: '',
     component: function component() {
-      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./src/plantilla/Menu.vue */ "./resources/js/src/plantilla/Menu.vue"));
+      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ./src/plantilla/Menu.vue */ "./resources/js/src/plantilla/Menu.vue"));
     },
     children: [{
       path: '/',
       name: 'inicio',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Usuarios.vue */ "./resources/js/src/componentes/Usuarios.vue"));
-      }
-    }, {
-      path: '/accesos',
-      name: 'accesos',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(7)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Accesos.vue */ "./resources/js/src/componentes/Accesos.vue"));
-      }
-    }, {
-      path: '/auditorias',
-      name: 'auditorias',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Auditoria.vue */ "./resources/js/src/componentes/Auditoria.vue"));
-      }
-    }, {
-      path: '/pacientes',
-      name: 'pacientes',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(4)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Pacientes.vue */ "./resources/js/src/componentes/Pacientes.vue"));
-      }
-    }, {
-      path: '/turnos',
-      name: 'turnos',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Turno.vue */ "./resources/js/src/componentes/Turno.vue"));
-      }
-    }, {
-      path: '/atencion',
-      name: 'atencion',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Atencion.vue */ "./resources/js/src/componentes/Atencion.vue"));
-      }
-    }, {
-      path: '/triaje',
-      name: 'triaje',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Triaje.vue */ "./resources/js/src/componentes/Triaje.vue"));
-      }
-    }, {
-      path: '/resultados',
-      name: 'resultados',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Resultados.vue */ "./resources/js/src/componentes/Resultados.vue"));
-      }
-    }, {
-      path: '/recetas',
-      name: 'recetas',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Receta.vue */ "./resources/js/src/componentes/Receta.vue"));
-      }
-    }, {
-      path: '/actualizar',
-      name: 'actualizar',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Actualizar.vue */ "./resources/js/src/componentes/Actualizar.vue"));
-      }
-    }, {
-      path: '/vista',
-      name: 'vista',
-      component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Vista.vue */ "./resources/js/src/componentes/Vista.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Usuarios.vue */ "./resources/js/src/componentes/Usuarios.vue"));
       }
     }]
   }, {
@@ -71085,7 +71017,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ./src/componentes/404.vue */ "./resources/js/src/componentes/404.vue"));
     }
   }]
-});
+}); //ejemplo
+
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
 /***/ }),
@@ -71161,13 +71094,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-__webpack_require__(/*! C:\wamp64\www\promoesfera\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\promoesfera\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
 __webpack_require__(/*! C:\xampp\htdocs\promoesfera\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\xampp\htdocs\promoesfera\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> ee6d0e6485faab35f41f40ac773ed61a922be9a6
 
 
 /***/ })

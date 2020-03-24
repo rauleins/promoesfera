@@ -14,32 +14,7 @@
             <li>
               <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">ADMINISTRACION </span></a>
               <ul aria-expanded="false" class="collapse">
-                  <li v-if="rol_usuario.TTJV_ficha_usuario"><router-link to="/">FICHA USUARIO</router-link></li>
-                  <li v-if="rol_usuario.TTJV_acceso_usuario"><router-link to="/accesos">ACCESO USUARIO</router-link></li>
-                  <li v-if="rol_usuario.TTJV_auditoria"><router-link to="/auditorias">AUDITORIA</router-link></li>
-                  <li><router-link to="/vista">VISTA</router-link></li>
-              </ul>
-            </li>
-            <li>
-              <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">RECEPCION </span></a>
-              <ul aria-expanded="false" class="collapse">
-                  <li v-if="rol_usuario.TTJV_paciente"><router-link to="/pacientes">PACIENTE</router-link></li>
-                  <li v-if="rol_usuario.TTJV_turno"><router-link to="/turnos">TURNO</router-link></li>
-              </ul>
-            </li>
-            <li>
-              <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-ambulance"></i><span class="hide-menu">ENFERMERIA </span></a>
-              <ul aria-expanded="false" class="collapse">
-                  <li v-if="rol_usuario.TTJV_atencion"><router-link to="/atencion">ATENCION</router-link></li>
-                  <li v-if="rol_usuario.TTJV_triaje"><router-link to="/triaje">TRIAJE</router-link></li>
-              </ul>
-            </li>
-            <li>
-              <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-address-card"></i><span class="hide-menu">SEGUIMIENTO </span></a>
-              <ul aria-expanded="false" class="collapse">
-                  <li v-if="rol_usuario.TTJV_resultados"><router-link to="/resultados">RESULTADOS</router-link></li>
-                  <li v-if="rol_usuario.TTJV_actualizar"><router-link to="/actualizar">ACT. INFORMACIÓN</router-link></li>
-                  <li v-if="rol_usuario.TTJV_receta"><router-link to="/recetas">RECETA</router-link></li>
+                  <li><router-link to="/">Usuarios</router-link></li>
               </ul>
             </li>
           </ul>
@@ -66,13 +41,12 @@ export default {
       axios.get("/sesion/recuperar").then(res => {
         if(res.data){
           this.nombre_usuario = res.data.nombre;
-          this.rol_usuario= res.data.roles[0];
           this.correo_usuario= res.data.email;
         }else{
-          $(".cerrarsesion").click();
+          //$(".cerrarsesion").click();
         }
       }).catch(err => {
-          $(".cerrarsesion").click();
+          //$(".cerrarsesion").click();
       });
     },
   },

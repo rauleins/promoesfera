@@ -11,10 +11,8 @@ class SesionController extends Controller
     public function recuperar(){
         $usuario = Auth::user()->nombre . " " . Auth::user()->apellido;
         $email = Auth::user()->email;
-        $rol = DB::select("SELECT * FROM ttjv_roles WHERE TTJV_id_usuario = " . Auth::user()->id);
         return [
             'nombre' => $usuario,
-            'roles' => $rol,
             'email' => $email
         ];
     }

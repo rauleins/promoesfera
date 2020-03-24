@@ -476,13 +476,13 @@ export default {
         }
         return this.error;
     },
-            //funciones export archivos
-        excel() {
-            window.open("/usuario/excel", "_top");
-                   },
-                           pdf() {
-            window.open("/usuario/pdf", "_top");
-                   }
+    //funciones export archivos
+    excel() {
+      window.open("/usuario/excel", "_top");
+    },
+    pdf() {
+      window.open("/usuario/pdf", "_top");
+    }
   },
   mounted() {
     this.listar(1, this.buscar);

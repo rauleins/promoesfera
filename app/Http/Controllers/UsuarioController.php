@@ -11,7 +11,6 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsuarioExport;
 use Barryvdh\DomPDF\Facade as PDF ;
 use Illuminate\Support\Facades\Auth;
-use App\Models\ttjv_Auditoria;
 
 class UsuarioController extends Controller
 {
@@ -49,14 +48,6 @@ class UsuarioController extends Controller
         $dato->email = $request->email;
         $dato->password = Hash::make($request->password);
         $dato->save();
-
-        $audit = new ttjv_Auditoria();
-        $audit->TTJV_accion = "Agregar usuario: " . $request->nombre . " " . $request->apellido . " Cédula: " . $request->cedula;
-        $audit->TTJV_fecha = Carbon::now();
-        $audit->TTJV_modulo = "Usuario";
-        $audit->TTJV_origen =  \Request::ip();
-        $audit->TTJV_id_usuario = Auth::user()->id;
-        $audit->save();
     }
     public function editar(Request $request){
         $dato = Usuario::findOrFail($request->id);
@@ -72,14 +63,6 @@ class UsuarioController extends Controller
             $dato->password = Hash::make($request->password);
         }
         $dato->save();
-
-        $audit = new ttjv_Auditoria();
-        $audit->TTJV_accion = "Editar usuario: " . $request->nombre . " " . $request->apellido . " Cédula: " . $request->cedula;
-        $audit->TTJV_fecha = Carbon::now();
-        $audit->TTJV_modulo = "Usuario";
-        $audit->TTJV_origen =  \Request::ip();
-        $audit->TTJV_id_usuario = Auth::user()->id;
-        $audit->save();
     }
     public function eliminar($id){
         Usuario::destroy($id);
@@ -87,11 +70,11 @@ class UsuarioController extends Controller
     public function excel()
     {
         return Excel::download(new UsuarioExport, 'Usuarios.xlsx');      
-     }
-     public function pdf()
-     {
+    }
+    public function pdf()
+    {
         $users = Usuario::get();
         $pdf = PDF::loadView('pdf.Usuario', compact('users'));
         return $pdf->download('Usuario.pdf');      
-      }
+    }
 }
