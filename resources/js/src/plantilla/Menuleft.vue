@@ -17,6 +17,12 @@
                   <li><router-link to="/">Usuarios</router-link></li>
               </ul>
             </li>
+            <li>
+              <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">VENTAS </span></a>
+              <ul aria-expanded="false" class="collapse">
+                  <li><router-link to="/persona">Clientes</router-link></li>
+              </ul>
+            </li>
           </ul>
         </nav>
       </div>

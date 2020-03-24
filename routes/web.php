@@ -114,5 +114,10 @@ Route::get('/verejemplo', 'SesionController@ejemplo');
 Route::get('/assets/plugins/popper/popper.min.js.map', function () {
     return redirect('/');
 });
+
+
+//CRUD Persona
+Route::get('/persona/listar', 'personaContoller@listar');
+
 //Rutas del FrontEnd (Vuejs)
 Route::get('/{any}', 'ApplicationController')->where('any', '.*');

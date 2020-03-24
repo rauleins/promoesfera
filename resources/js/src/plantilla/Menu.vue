@@ -180,7 +180,7 @@
           </div>
         </div>
       </div>
-      <footer class="footer">© 2020 Instituto Tecnológico Cordillera</footer>
+      <footer class="footer">Raúl Benalcázar</footer>
     </div>
   </div>
 </template>

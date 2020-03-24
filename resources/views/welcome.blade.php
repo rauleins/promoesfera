@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Triaje || Instituto Cordillera</title>
+    <title>Promoesfera</title>
     <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/colors/blue.css') }}" id="theme" rel="stylesheet">

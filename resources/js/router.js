@@ -15,6 +15,11 @@ const router =new Router({
                     name: 'inicio',
                     component: () => import('./src/componentes/Usuarios.vue')
                 },
+                {
+                    path: '/persona',
+                    name: 'persona',
+                    component: () => import('./src/componentes/Persona.vue')
+                },
             ]
         }, 
         {
