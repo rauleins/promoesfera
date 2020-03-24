@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
 use App\Models\persona;
+use App\Models\cliente;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
@@ -59,7 +60,8 @@ class personaContoller extends Controller
         $pr->fecha_crea =$now;
         $pr->save();
 
-        $id = $pr->idPersona;
+        $id = $pr->id_persona;
+
         $cl = new cliente();
         $cl->categoria = $request->categoria;
         $cl->contacto1 = $request->contacto1;
@@ -68,13 +70,13 @@ class personaContoller extends Controller
         $cl->contacto2 = $request->contacto2;
         $cl->email2 = $request->email2;
         $cl->celular2 = $request->celular2;
-        $pr->save();
+        $cl->id_persona = $id;
+        $cl->save();
 
     }
     public function editar(Request $request){
         $now = Carbon::now();
-        $dato = persona::findOrFail($request->id_persona);
-        
+        $pr = persona::findOrFail($request->id_persona);
         $pr->cedulaRuc = $request->cedulaRuc;
         $pr->razonsocial_nombres = $request->razonsocial_nombres;
         $pr->tipo = $request->tipo;
@@ -89,7 +91,7 @@ class personaContoller extends Controller
         $pr->fecha_crea =$now;
         $pr->save();
 
-        $dato = persona::findOrFail($request->id_persona);
+        $cl = persona::findOrFail($request->id_persona);
         $cl->categoria = $request->categoria;
         $cl->contacto1 = $request->contacto1;
         $cl->email1 = $request->email1;
