@@ -9,11 +9,7 @@
             <h3 class="text-themecolor m-b-0 m-t-0">Table</h3>
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-<<<<<<< HEAD
-                <a href="javascript:void(0)">Home hola 2</a>
-=======
-                <a href="javascript:void(0)">home hola 1</a>
->>>>>>> 5b7c0d3d1d1ba2bb4003d4d43332d6795c5b4e59
+                <a href="javascript:void(0)">Home</a>
               </li>
               <li class="breadcrumb-item active">Table</li>
             </ol>
