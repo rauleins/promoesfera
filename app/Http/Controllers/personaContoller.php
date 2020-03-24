@@ -18,30 +18,30 @@ use Illuminate\Support\Facades\Auth;
 
 class personaContoller extends Controller
 {
-    public function listar(Request $request){
-        $buscar = $request->buscar;
-        $res = persona::select("persona.*","cliente.*")
-                ->join("cliente", "cliente.id_persona", "=", "persona.id_persona")
-                ->where("persona.cedulaRuc", "like", "%".$buscar."%")
-                ->orWhere("persona.razonsocial_nombres", "like", "%".$buscar."%")
-                ->orWhere(DB::raw("CONCAT(persona.razonsocial_nombres, ' ', persona.razoncomercial_apellidos) like '%$buscar%'"))
-                ->orWhere("persona.contacto", "like", "%".$buscar."%")
-                ->orWhere("persona.direccion", "like", "%".$buscar."%")
-                ->orWhere("persona.eMail", "like", "%".$buscar."%")
-                ->orWhere("persona.ciudad", "like", "%".$buscar."%")
-                ->orWhere("persona.telefono", "like", "%".$buscar."%")->paginate(20);
-        return [
-            'paginacion' => [
-                'total'        => $res->total(),
-                'current_page' => $res->currentPage(),
-                'per_page'     => $res->perPage(),
-                'last_page'    => $res->lastPage(),
-                'from'         => $res->firstItem(),
-                'to'           => $res->lastItem(),
-            ],
-            'datos' => $res
-        ];
-    }
+            public function listar(Request $request){
+                $buscar = $request->buscar;
+                $res = persona::select("persona.*","cliente.*")
+                        ->join("cliente", "cliente.id_persona", "=", "persona.id_persona")
+                        ->where("persona.cedulaRuc", "like", "%".$buscar."%")
+                        ->orWhere("persona.razonsocial_nombres", "like", "%".$buscar."%")
+                        ->orWhere(DB::raw("CONCAT(persona.razonsocial_nombres, ' ', persona.razoncomercial_apellidos) like '%$buscar%'"))
+                        ->orWhere("persona.contacto", "like", "%".$buscar."%")
+                        ->orWhere("persona.direccion", "like", "%".$buscar."%")
+                        ->orWhere("persona.eMail", "like", "%".$buscar."%")
+                        ->orWhere("persona.ciudad", "like", "%".$buscar."%")
+                        ->orWhere("persona.telefono", "like", "%".$buscar."%")->paginate(20);
+                return [
+                    'paginacion' => [
+                        'total'        => $res->total(),
+                        'current_page' => $res->currentPage(),
+                        'per_page'     => $res->perPage(),
+                        'last_page'    => $res->lastPage(),
+                        'from'         => $res->firstItem(),
+                        'to'           => $res->lastItem(),
+                    ],
+                    'datos' => $res
+                ];
+            }
     public function guardar(Request $request){
         $now = Carbon::now();
 
@@ -99,7 +99,7 @@ class personaContoller extends Controller
         $cl->contacto2 = $request->contacto2;
         $cl->email2 = $request->email2;
         $cl->celular2 = $request->celular2;
-        $pr->save();
+        $cl->save();
     }
     public function eliminar($id){
         persona::destroy($id);
