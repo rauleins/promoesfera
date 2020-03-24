@@ -25,7 +25,7 @@ class UsuarioExport implements FromCollection, WithHeadings, ShouldAutoSize
             "users.estado",
             "users.email",
             "users.created_at",
-            "users.updated_at",
+            "users.updated_at"
         )
             ->get();
     }

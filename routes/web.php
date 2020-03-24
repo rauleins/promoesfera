@@ -116,8 +116,14 @@ Route::get('/assets/plugins/popper/popper.min.js.map', function () {
 });
 
 
-//CRUD Persona
+//CRUD Persona-cliente
 Route::get('/persona/listar', 'personaContoller@listar');
+Route::post('/persona/guardar', 'personaContoller@guardar');
+Route::put('/persona/editar', 'personaContoller@editar');
+Route::delete('/persona/eliminar/{id}', 'personaContoller@eliminar');
+Route::get('/persona/excel', 'personaContoller@excel');
+Route::get('/persona/pdf', 'personaContoller@pdf');
+
 
 //Rutas del FrontEnd (Vuejs)
 Route::get('/{any}', 'ApplicationController')->where('any', '.*');

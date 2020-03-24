@@ -93,90 +93,152 @@
             <div class="modal-body">
               <form action="">
                 <div class="row form-material">
-                  <div class="col-xl-4 col-lg-12 col-md-12">
+                  <div class="col-xl-6 col-lg-12 col-md-12">
                       <div class="form-group">
-                          <label for="exampleInputEmail1">Nombres</label>
-                          <input type="text" class="form-control" v-model="nombre" onkeypress="return sololetras(event)">
+                          <label for="exampleInputEmail1">Razón social - Nombres </label>
+                          <input type="text" class="form-control" v-model="razonsocial_nombres">
                           <div v-show="error">
-                              <div class="invalid-feedback" style="display:block;" v-for="err in errornombre" :key ="err">{{err}}</div>
+                              <div class="invalid-feedback" style="display:block;" v-for="err in errorrazonsocial_nombres" :key ="err">{{err}}</div>
                           </div>
                       </div> 
                   </div>
-                  <div class="col-xl-4 col-lg-12 col-md-12">
+                  <div class="col-xl-3 col-lg-12 col-md-12">
                       <div class="form-group">
-                          <label for="exampleInputEmail1">Apellidos</label>
-                          <input type="text" class="form-control" v-model="apellido" onkeypress="return sololetras(event)">
-                          <div v-show="error">
-                              <div class="invalid-feedback" style="display:block;" v-for="err in errorapellido" :key ="err">{{err}}</div>
-                          </div>
-                      </div> 
-                  </div>
-                  <div class="col-xl-4 col-lg-12 col-md-12">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Cédula</label>
-                          <input type="text" class="form-control" v-model="cedula" onkeypress="return solonumeros(event)">
-                          <div v-show="error">
-                              <div class="invalid-feedback" style="display:block;" v-for="err in errorcedula" :key ="err">{{err}}</div>
-                          </div>
-                      </div> 
-                  </div>
-                  <div class="col-xl-12 col-lg-12 col-md-12">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Dirección</label>
-                          <input type="text" class="form-control" v-model="direccion">
-                      </div> 
-                  </div>
-                  <div class="col-xl-6 col-lg-12 col-md-12">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Teléfono</label>
-                          <input type="text" class="form-control" v-model="telefono" onkeypress="return solonumeros(event)" maxlength="9">
-                          <div v-show="error">
-                              <div class="invalid-feedback" style="display:block;" v-for="err in errortelefono" :key ="err">{{err}}</div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xl-6 col-lg-12 col-md-12">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Celular</label>
-                          <input type="text" class="form-control" v-model="celular" onkeypress="return solonumeros(event)" maxlength="10">
-                      </div>
-                  </div>
-                  <div class="col-xl-6 col-lg-12 col-md-12">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Correo electrónico</label>
-                          <input type="text" class="form-control" v-model="email">
-                          <div v-show="error">
-                              <div class="invalid-feedback" style="display:block;" v-for="err in erroremail" :key ="err">{{err}}</div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-xl-6 col-lg-12 col-md-12">
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Estado</label>
-                          <select class="form-control" v-model="estado">
-                            <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
+                          <label for="exampleInputEmail1">Tipo Cliente</label>
+                          <select class="form-control" v-model="tipo">
+                              <option value="">Seleccione un Tipo</option>
+                              <option value="Natural">Natural</option>
+                              <option value="Juridica">Juridica</option>
                           </select>
                       </div>
                   </div>
-                  <div class="col-xl-6 col-lg-12 col-md-12">
+                  <div class="col-xl-3 col-lg-12 col-md-12">
                       <div class="form-group">
-                          <label for="exampleInputEmail1">Contraseña <span v-if="tipomodal==2" style="font-size: 10px;font-weight: bold;font-family: unset;">(Dejar vacío si no se cambia)</span></label>
-                          <input type="password" name="passusuariob" autocomplete="current-passwordb" class="form-control" v-model="password">
+                          <label for="exampleInputEmail1">Cédula-Ruc</label>
+                          <input type="text" class="form-control" v-model="cedulaRuc" onkeypress="return solonumeros(event)">
                           <div v-show="error">
-                              <div class="invalid-feedback" style="display:block;" v-for="err in errorpassword" :key ="err">{{err}}</div>
+                              <div class="invalid-feedback" style="display:block;" v-for="err in errorcedulaRuc" :key ="err">{{err}}</div>
                           </div>
+                      </div> 
+                  </div>
+                  <div class="col-lg-4 col-xs-12 col-sm-12">
+                      <div class="form-group">
+                          <label for="exampleFormControlInput1">Categoría</label>
+                          <select class="form-control" v-model="categoria">
+                              <option value="">SELECCIONE CATEGORÍA</option>
+                              <option value="ALIMENTOS Y BEBIDAS ">ALIMENTOS Y BEBIDAS</option>
+                              <option value="BANCA Y FINANZAS ">BANCA Y FINANZAS</option>
+                              <option value="FARMACEUTICAS ">FARMACEUTICAS</option>
+                              <option value="BARES Y RESTAURANTES ">BARES Y RESTAURANTES</option>
+                              <option value="DISTRIBUIDORES ">DISTRIBUIDORES</option>
+                              <option value="AGENCIAS DE PUBLICIDAD ">AGENCIAS DE PUBLICIDAD</option>
+                              <option value="INDUSTRIA PETROQUÍMICA ">INDUSTRIA PETROQUÍMICA</option>
+                              <option value="EDUCACIÓN  ">EDUCACIÓN </option>
+                              <option value="TECNOLOGÍA ">TECNOLOGÍA</option>
+                              <option value="HOSPITALIDAD ">HOSPITALIDAD</option>
+                              <option value="BELLEZA ">BELLEZA</option>
+                              <option value="CONSUMO ">CONSUMO</option>
+                              <option value="GOBIERNO ">GOBIERNO</option>
+                              <option value="CONSTRUCCIÓN ">CONSTRUCCIÓN</option>
+                              <option value="SALUD  ">SALUD </option>
+                              <option value="INDUSTRIA AUTOMOTRIZ ">INDUSTRIA AUTOMOTRIZ</option>
+                          </select>
+                          <div v-show="error">
+                              <div class="invalid-feedback" style="display:block;" v-for="err in errorcategoria" :key ="err">{{err}}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Ciudad</label>
+                          <input type="text" class="form-control" v-model="ciudad" onkeypress="return sololetras(event)">
+                          <div v-show="error">
+                              <div class="invalid-feedback" style="display:block;" v-for="err in errorciudad" :key ="err">{{err}}</div>
+                          </div>
+                      </div> 
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Teléfonos</label>
+                          <input type="text" class="form-control" v-model="telefono">
                       </div>
                   </div>
                   <div class="col-xl-6 col-lg-12 col-md-12">
                       <div class="form-group">
-                          <label for="exampleInputEmail1">Repetir Contraseña</label>
-                          <input type="password" name="repassusuariob" autocomplete="recurrent-passwordb" class="form-control" v-model="repassword">
+                          <label for="exampleInputEmail1">Dirección</label>
+                          <input type="text" class="form-control" v-model="direccion">
                           <div v-show="error">
-                              <div class="invalid-feedback" style="display:block;" v-for="err in errorrepassword" :key ="err">{{err}}</div>
+                              <div class="invalid-feedback" style="display:block;" v-for="err in errordireccion" :key ="err">{{err}}</div>
+                          </div>
+                      </div> 
+                  </div>
+                  <div class="col-xl-6 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Dirección Entrega</label>
+                          <input type="text" class="form-control" v-model="direccion_entrega">
+                      </div> 
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Contacto</label>
+                          <input type="text" class="form-control" v-model="contacto" onkeypress="return sololetras(event)">
+                      </div> 
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Celular</label>
+                          <input type="text" class="form-control" v-model="celular" onkeypress="return solonumeros(event)" maxlength="30">
+                          <div v-show="error">
+                              <div class="invalid-feedback" style="display:block;" v-for="err in errorcelular" :key ="err">{{err}}</div>
                           </div>
                       </div>
                   </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">e-Mail</label>
+                          <input type="email" class="form-control" v-model="eMail">
+                          <div v-show="error">
+                              <div class="invalid-feedback" style="display:block;" v-for="err in erroreMail" :key ="err">{{err}}</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Contacto 1</label>
+                          <input type="text" class="form-control" v-model="contacto1" onkeypress="return sololetras(event)">
+                      </div> 
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Celular 1</label>
+                          <input type="text" class="form-control" v-model="celular1" onkeypress="return solonumeros(event)" maxlength="30">
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">e-Mail 1</label>
+                          <input type="email" class="form-control" v-model="email1">
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Contacto 2</label>
+                          <input type="text" class="form-control" v-model="contacto2" onkeypress="return sololetras(event)">
+                      </div> 
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Celular 2</label>
+                          <input type="text" class="form-control" v-model="celular2" onkeypress="return solonumeros(event)" maxlength="30">
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-12 col-md-12">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">e-Mail 2</label>
+                          <input type="email" class="form-control" v-model="email2">
+                      </div>
+                  </div>
+                  
                 </div>
               </form>
             </div>
@@ -220,24 +282,32 @@ export default {
         error:0,
         id:0,
         //campos
-        nombre:"",
-        apellido:"",
-        cedula:"",
+        cedulaRuc:"",
+        razonsocial_nombres:"",
+        razoncomercial_apellidos:"",
+        tipo:"",
+        contacto :"",
         direccion:"",
+        direccion_entrega:"",
         telefono:"",
         celular:"",
-        estado:1,
-        email:"",
-        password:"",
-        repassword:"",
+        eMail:"",
+        ciudad:"",
+        categoria:"",
+        contacto1:"",
+        email1:"",
+        celular1:"",
+        contacto2:"",
+        email2:"",
+        celular2:"",
         //errores
         errorcedulaRuc: [],
         errorrazonsocial_nombres: [],
-        errorrazoncomercial_apellidos: [],
         errordireccion: [],
         erroreMail: [],
         errorcelular: [],
         errorciudad: [],
+        errorcategoria: [],
         
     };
   },
@@ -300,9 +370,10 @@ export default {
         this.erroreMail  =  [];
         this.errorcelular  =  [];
         this.errorciudad =  [];
+        this.errorcategoria =  [];
         switch(tipo){
             case 'agregar': {
-                this.titulomodal="Agregar Usuarios";
+                this.titulomodal="Agregar Cliente";
                 this.abrirmodal=1;
                 this.tipomodal=1;
                 this.id = null;
@@ -313,11 +384,12 @@ export default {
                 this.tipo = "";
                 this.contacto  = "";
                 this.direccion = "";
-                this.direccion_entrega = 1;
+                this.direccion_entrega= "";
                 this.telefono = "";
                 this.celular = "";
                 this.eMail = "";
                 this.ciudad = "";
+                this.categoria="",
                 this.contacto1 = "";
                 this.email1 = "";
                 this.celular1 = "";
@@ -345,6 +417,7 @@ export default {
                 this.celular = datos.celular ;
                 this.eMail = datos.eMail;
                 this.ciudad = datos.ciudad ;
+                this.categoria= datos.categoria;
                 this.contacto1 = datos.contacto1 ;
                 this.email1 = datos.email1 ;
                 this.celular1 = datos.celular1 ;
@@ -398,6 +471,7 @@ export default {
           celular:this.celular ,
           eMail:this.eMail ,
           ciudad:this.ciudad ,
+          categoria:this.categoria,
           contacto1:this.contacto1 ,
           email1:this.email1 ,
           celular1:this.celular1 ,
@@ -427,7 +501,7 @@ export default {
             confirmButtonText: 'Eliminar'
         }).then((result) => {
             if (result.value) {
-                axios.delete("/usuarios/eliminar/"+id);
+                axios.delete("/persona/eliminar/"+id);
                 this.listar(1,this.buscar);
                 alertify.success('Registro Eliminado');
             }
@@ -437,11 +511,11 @@ export default {
         this.error = 0;
         this.errorcedulaRuc  =  [];
         this.errorrazonsocial_nombres  =  [];
-        this.errorrazoncomercial_apellidos  =  [];
         this.errordireccion  =  [];
         this.erroreMail  =  [];
         this.errorcelular  =  [];
         this.errorciudad =  [];
+        this.errorcategoria =  [];
   
         if(!this.cedulaRuc){
           this.errorcedulaRuc.push("Ingrese su Cedula");
@@ -451,12 +525,13 @@ export default {
           this.errorrazonsocial_nombres.push("Ingrese su Nombre o Razon Social");
           this.error = 1;
         }
-        if(!this.razoncomercial_apellidos){
-          this.errorrazoncomercial_apellidos.push("Ingrese su Apellidoo Razon Comercial");
-          this.error = 1;
-        }
+        
         if(!this.direccion){
           this.errordireccion.push("Ingrese su Direccion");
+          this.error = 1;
+        }
+        if(!this.categoria){
+          this.errorcategoria.push("Ingrese una Categoria");
           this.error = 1;
         }
         if(!this.eMail){
@@ -476,10 +551,10 @@ export default {
     },
     //funciones export archivos
     excel() {
-      window.open("/usuario/excel", "_top");
+      window.open("/persona/excel", "_top");
     },
     pdf() {
-      window.open("/usuario/pdf", "_top");
+      window.open("/persona/pdf", "_top");
     }
   },
   mounted() {

@@ -41,4 +41,76 @@ class personaContoller extends Controller
             'datos' => $res
         ];
     }
+    public function guardar(Request $request){
+        $now = Carbon::now();
+
+        $pr = new persona();
+        $pr->cedulaRuc = $request->cedulaRuc;
+        $pr->razonsocial_nombres = $request->razonsocial_nombres;
+        $pr->tipo = $request->tipo;
+        $pr->contacto  = $request->contacto;
+        $pr->direccion = $request->direccion;
+        $pr->direccion_entrega = $request->direccion_entrega;
+        $pr->telefono = $request->telefono;
+        $pr->celular = $request->celular;
+        $pr->eMail = $request->eMail;
+        $pr->ciudad = $request->ciudad;
+        $pr->usuario_crea = 1;
+        $pr->fecha_crea =$now;
+        $pr->save();
+
+        $id = $pr->idPersona;
+        $cl = new cliente();
+        $cl->categoria = $request->categoria;
+        $cl->contacto1 = $request->contacto1;
+        $cl->email1 = $request->email1;
+        $cl->celular1 = $request->celular1;
+        $cl->contacto2 = $request->contacto2;
+        $cl->email2 = $request->email2;
+        $cl->celular2 = $request->celular2;
+        $pr->save();
+
+    }
+    public function editar(Request $request){
+        $now = Carbon::now();
+        $dato = persona::findOrFail($request->id_persona);
+        
+        $pr->cedulaRuc = $request->cedulaRuc;
+        $pr->razonsocial_nombres = $request->razonsocial_nombres;
+        $pr->tipo = $request->tipo;
+        $pr->contacto  = $request->contacto;
+        $pr->direccion = $request->direccion;
+        $pr->direccion_entrega = $request->direccion_entrega;
+        $pr->telefono = $request->telefono;
+        $pr->celular = $request->celular;
+        $pr->eMail = $request->eMail;
+        $pr->ciudad = $request->ciudad;
+        $pr->usuario_crea = 1;
+        $pr->fecha_crea =$now;
+        $pr->save();
+
+        $dato = persona::findOrFail($request->id_persona);
+        $cl->categoria = $request->categoria;
+        $cl->contacto1 = $request->contacto1;
+        $cl->email1 = $request->email1;
+        $cl->celular1 = $request->celular1;
+        $cl->contacto2 = $request->contacto2;
+        $cl->email2 = $request->email2;
+        $cl->celular2 = $request->celular2;
+        $pr->save();
+    }
+    public function eliminar($id){
+        persona::destroy($id);
+    }
+    public function excel()
+    {
+        return Excel::download(new personaExport, 'persona.xlsx');      
+    }
+    public function pdf()
+    {
+        $users = Usuario::get();
+        $pdf = PDF::loadView('pdf.persona', compact('persona'));
+        return $pdf->download('persona.pdf');      
+    }
+
 }

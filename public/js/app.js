@@ -71008,19 +71008,19 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/',
       name: 'inicio',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Usuarios.vue */ "./resources/js/src/componentes/Usuarios.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Usuarios.vue */ "./resources/js/src/componentes/Usuarios.vue"));
       }
     }, {
       path: '/persona',
       name: 'persona',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Persona.vue */ "./resources/js/src/componentes/Persona.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ./src/componentes/Persona.vue */ "./resources/js/src/componentes/Persona.vue"));
       }
     }]
   }, {
     path: "*",
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ./src/componentes/404.vue */ "./resources/js/src/componentes/404.vue"));
+      return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ./src/componentes/404.vue */ "./resources/js/src/componentes/404.vue"));
     }
   }]
 }); //ejemplo
